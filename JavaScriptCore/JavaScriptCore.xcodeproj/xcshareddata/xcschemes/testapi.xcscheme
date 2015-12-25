@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "14BD59BE0A3E8F9000BAF59C"
-               BuildableName = "testapi"
+               BuildableName = "libtestapi.a"
                BlueprintName = "testapi"
                ReferencedContainer = "container:JavaScriptCore.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14BD59BE0A3E8F9000BAF59C"
-            BuildableName = "testapi"
+            BuildableName = "libtestapi.a"
             BlueprintName = "testapi"
             ReferencedContainer = "container:JavaScriptCore.xcodeproj">
          </BuildableReference>
@@ -48,11 +48,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14BD59BE0A3E8F9000BAF59C"
-            BuildableName = "testapi"
+            BuildableName = "libtestapi.a"
             BlueprintName = "testapi"
             ReferencedContainer = "container:JavaScriptCore.xcodeproj">
          </BuildableReference>
@@ -66,11 +67,12 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "14BD59BE0A3E8F9000BAF59C"
-            BuildableName = "testapi"
+            BuildableName = "libtestapi.a"
             BlueprintName = "testapi"
             ReferencedContainer = "container:JavaScriptCore.xcodeproj">
          </BuildableReference>

@@ -9067,7 +9067,7 @@
 			productInstallPath = /usr/local/bin;
 			productName = jsc;
 			productReference = 0FF922CF14F46B130041A24E /* JSCLLIntOffsetsExtractor */;
-			productType = "com.apple.product-type.tool";
+			productType = "com.apple.product-type.library.static";
 		};
 		10D58E011889C1A000C05A0D /* JSCLLIntOffsetsExtractor iOS */ = {
 			isa = PBXNativeTarget;
@@ -9128,7 +9128,7 @@
 			name = minidom;
 			productName = minidom;
 			productReference = 141211200A48793C00480255 /* minidom */;
-			productType = "com.apple.product-type.tool";
+			productType = "com.apple.product-type.library.static";
 		};
 		14BD59BE0A3E8F9000BAF59C /* testapi */ = {
 			isa = PBXNativeTarget;
@@ -9146,7 +9146,7 @@
 			name = testapi;
 			productName = testapi;
 			productReference = 14BD59BF0A3E8F9000BAF59C /* testapi */;
-			productType = "com.apple.product-type.tool";
+			productType = "com.apple.product-type.library.static";
 		};
 		651122F714046A4C002B101D /* testRegExp */ = {
 			isa = PBXNativeTarget;
@@ -9163,7 +9163,7 @@
 			productInstallPath = /usr/local/bin;
 			productName = jsc;
 			productReference = 6511230514046A4C002B101D /* testRegExp */;
-			productType = "com.apple.product-type.tool";
+			productType = "com.apple.product-type.library.static";
 		};
 		932F5B3E0822A1C700736975 /* JavaScriptCore */ = {
 			isa = PBXNativeTarget;
@@ -11425,6 +11425,19 @@
 			baseConfigurationReference = 10EAA6FF1889E6B300DEB161 /* JavaScriptCore-iOS-Static.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(DEBUG_DEFINES)",
+					"HAVE_DTRACE=$(HAVE_DTRACE)",
+					"WEBKIT_VERSION_MIN_REQUIRED=WEBKIT_VERSION_LATEST",
+					HAVE_HEADER_DETECTION_H,
+					"JSC_OBJC_API_ENABLED=1",
+					JSC_OBJC_API_AVAILABLE_MAC_OS_X_1080,
+					"$(FEATURE_DEFINES)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS)",
+					"__MAC_OS_X_VERSION_MIN_REQUIRED=0",
+					"ENABLE_YARR_JIT=0",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -11441,6 +11454,19 @@
 			baseConfigurationReference = 10EAA6FF1889E6B300DEB161 /* JavaScriptCore-iOS-Static.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(DEBUG_DEFINES)",
+					"HAVE_DTRACE=$(HAVE_DTRACE)",
+					"WEBKIT_VERSION_MIN_REQUIRED=WEBKIT_VERSION_LATEST",
+					HAVE_HEADER_DETECTION_H,
+					"JSC_OBJC_API_ENABLED=1",
+					JSC_OBJC_API_AVAILABLE_MAC_OS_X_1080,
+					"$(FEATURE_DEFINES)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS)",
+					"__MAC_OS_X_VERSION_MIN_REQUIRED=0",
+					"ENABLE_YARR_JIT=0",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ledit",
@@ -11456,6 +11482,19 @@
 			baseConfigurationReference = 10EAA6FF1889E6B300DEB161 /* JavaScriptCore-iOS-Static.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(DEBUG_DEFINES)",
+					"HAVE_DTRACE=$(HAVE_DTRACE)",
+					"WEBKIT_VERSION_MIN_REQUIRED=WEBKIT_VERSION_LATEST",
+					HAVE_HEADER_DETECTION_H,
+					"JSC_OBJC_API_ENABLED=1",
+					JSC_OBJC_API_AVAILABLE_MAC_OS_X_1080,
+					"$(FEATURE_DEFINES)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS)",
+					"__MAC_OS_X_VERSION_MIN_REQUIRED=0",
+					"ENABLE_YARR_JIT=0",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ledit",
@@ -11472,6 +11511,19 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUILD_VARIANTS = normal;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(DEBUG_DEFINES)",
+					"HAVE_DTRACE=$(HAVE_DTRACE)",
+					"WEBKIT_VERSION_MIN_REQUIRED=WEBKIT_VERSION_LATEST",
+					HAVE_HEADER_DETECTION_H,
+					"JSC_OBJC_API_ENABLED=1",
+					JSC_OBJC_API_AVAILABLE_MAC_OS_X_1080,
+					"$(FEATURE_DEFINES)",
+					"$(GCC_PREPROCESSOR_DEFINITIONS)",
+					"__MAC_OS_X_VERSION_MIN_REQUIRED=0",
+					"ENABLE_YARR_JIT=0",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -11549,6 +11601,7 @@
 			buildSettings = {
 				ENABLE_BITCODE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Debug;
 		};
@@ -11558,6 +11611,7 @@
 			buildSettings = {
 				ENABLE_BITCODE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Release;
 		};
@@ -11567,6 +11621,7 @@
 			buildSettings = {
 				BUILD_VARIANTS = normal;
 				ENABLE_BITCODE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Production;
 		};
@@ -11864,6 +11919,7 @@
 			buildSettings = {
 				ENABLE_BITCODE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Profiling;
 		};

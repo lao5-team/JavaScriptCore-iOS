@@ -69,13 +69,13 @@ static NSMapTable *wrapperCache()
 + (void)addWrapper:(JSVirtualMachine *)wrapper forJSContextGroupRef:(JSContextGroupRef)group
 {
     MutexLocker locker(wrapperCacheLock());
-    NSMapInsert(wrapperCache(), group, wrapper);
+    [wrapperCache() setObject:wrapper forKey:(id)group];
 }
 
 + (JSVirtualMachine *)wrapperForJSContextGroupRef:(JSContextGroupRef)group
 {
     MutexLocker locker(wrapperCacheLock());
-    return static_cast<JSVirtualMachine *>(NSMapGet(wrapperCache(), group));
+    return [wrapperCache() objectForKey:(id)group];
 }
 
 @end
@@ -161,7 +161,8 @@ static id getInternalObjcObject(id object)
         [m_externalObjectGraph setObject:ownedObjects forKey:owner];
         [ownedObjects release];
     }
-    NSMapInsert(ownedObjects, object, reinterpret_cast<void*>(reinterpret_cast<size_t>(NSMapGet(ownedObjects, object)) + 1));
+    void* inertObject = reinterpret_cast<void*>(reinterpret_cast<size_t>([ownedObjects objectForKey:object]) + 1);
+    [ownedObjects setObject:(id)inertObject forKey:object];
 }
 
 - (void)removeManagedReference:(id)object withOwner:(id)owner
@@ -178,14 +179,16 @@ static id getInternalObjcObject(id object)
     if (!ownedObjects)
         return;
    
-    size_t count = reinterpret_cast<size_t>(NSMapGet(ownedObjects, object));
+    size_t count = reinterpret_cast<size_t>([ownedObjects objectForKey:object]);
     if (count > 1) {
-        NSMapInsert(ownedObjects, object, reinterpret_cast<void*>(count - 1));
+        void* insertObject = reinterpret_cast<void*>(count - 1);
+        [ownedObjects setObject:(id)insertObject forKey:object];
         return;
     }
     
-    if (count == 1)
-        NSMapRemove(ownedObjects, object);
+    if (count == 1) {
+        [ownedObjects removeObjectForKey:object];
+    }
 
     if (![ownedObjects count])
         [m_externalObjectGraph removeObjectForKey:owner];
@@ -210,12 +213,12 @@ JSContextGroupRef getGroupFromVirtualMachine(JSVirtualMachine *virtualMachine)
 
 - (JSContext *)contextForGlobalContextRef:(JSGlobalContextRef)globalContext
 {
-    return static_cast<JSContext *>(NSMapGet(m_contextCache, globalContext));
+    return [m_contextCache objectForKey:(id)globalContext];
 }
 
 - (void)addContext:(JSContext *)wrapper forGlobalContextRef:(JSGlobalContextRef)globalContext
 {
-    NSMapInsert(m_contextCache, globalContext, wrapper);
+    [m_contextCache setObject:wrapper forKey:(id)globalContext];
 }
 
 - (NSMapTable *)externalObjectGraph
@@ -245,7 +248,7 @@ void scanExternalObjectGraph(JSC::VM& vm, JSC::SlotVisitor& visitor, void* root)
             id ownedObject;
             NSEnumerator *enumerator = [ownedObjects keyEnumerator];
             while ((ownedObject = [enumerator nextObject])) {
-                ASSERT(reinterpret_cast<size_t>(NSMapGet(ownedObjects, ownedObject)) == 1);
+                ASSERT(reinterpret_cast<size_t>([ownedObjects objectForKey:ownedObject]) == 1);
                 stack.append(static_cast<void*>(ownedObject));
             }
         }

@@ -586,10 +586,10 @@ static JSValue *allocateConstructorForCustomClass(JSContext *context, const char
 
 - (JSValue *)objcWrapperForJSValueRef:(JSValueRef)value
 {
-    JSValue *wrapper = static_cast<JSValue *>(NSMapGet(m_cachedObjCWrappers, value));
+    JSValue *wrapper = static_cast<JSValue *>([m_cachedObjCWrappers objectForKey:(id)value]);
     if (!wrapper) {
         wrapper = [[[JSValue alloc] initWithValue:value inContext:m_context] autorelease];
-        NSMapInsert(m_cachedObjCWrappers, value, wrapper);
+        [m_cachedObjCWrappers setObject:wrapper forKey:(id)value];
     }
     return wrapper;
 }
