@@ -22,5 +22,5 @@ bitcode 还未开启
 
 自己还参试在iOS6 下面运行了  React-Native 的Demo  2048
 
-![](http://img.blog.csdn.net/20151225131321120)
-![](http://img.blog.csdn.net/20151225131327935)
+![](https://raw.githubusercontent.com/li6185377/JavaScriptCore-iOS/master/lib/1.png)
+![](https://raw.githubusercontent.com/li6185377/JavaScriptCore-iOS/master/lib/2.png)
